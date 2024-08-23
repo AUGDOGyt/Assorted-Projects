@@ -1,0 +1,66 @@
+import math
+import random
+
+#Lets go gambling
+
+funds=5000
+luckModifier=0
+
+def slots():
+  global funds
+  slotsFigures=["7 ","Cherry ","Bomb ","Gold Coin ","Rock "]
+  print("Welcome to slots")
+  print("You have $",funds)
+  amountUp=(int(input("How much would you like to put up?")))
+  if amountUp>funds:
+    print("You dont have that much money")
+    print("")
+    slots()
+  print("You have bet $", amountUp)
+  funds=funds-amountUp
+  print("You now have $",funds)
+  if luckModifier>=25:
+    slot1=slot3
+    if luckModifier>=50:
+      slot2=slot3
+  slot1=random.choice(slotsFigures)
+  slot2=random.choice(slotsFigures)
+  slot3=random.choice(slotsFigures)
+  print(slot1,slot2,slot3)
+  if slot3==slot2 or slot1:
+    print("No effect")
+    funds=funds+amountUp
+  if slot3==slot2 and slot1:
+    print("Jackpot")
+    funds=funds+(2*amountUp)
+  return
+def blackJack():
+  return
+def Roulette():
+  return
+
+def gameLoop():
+  name=(input("Whats your name?"))
+  if name=="Hakari" or "hakari":
+    luckModifier=25
+  print("Please select a gamemode", name)
+  print("Slots  Blackjack  Roulette")
+  gamemode=(input("(Please input gamemode here)"))
+  print("")
+  if gamemode=="slots" or "Slots":
+    slots()
+  else:
+    if gamemode=="blackjack" or "Blackjack":
+      blackJack()
+    else:
+      if gamemode=="Roulette" or "roulette":
+        Roulette()
+  return
+
+print("Welcome to gambling simulator")
+print("Produced by AuG__DOG")
+print("")
+
+start=(input("Would you like to begin?"))
+if start != "":
+  gameLoop()
